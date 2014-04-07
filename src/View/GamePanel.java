@@ -2,6 +2,7 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
@@ -39,6 +40,7 @@ public class GamePanel extends JPanel {
 	
 	public void setUpButtons(){
 		this.buttonPanel = new JPanel(new GridLayout(1, 6, 10, 10));
+		GridBagConstraints gbc = new GridBagConstraints();
 		newGameButton = new JButton("New Game");
 		saveButton = new JButton("Save");
 		loadButton = new JButton("Load");
