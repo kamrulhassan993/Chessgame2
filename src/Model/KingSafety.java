@@ -7,7 +7,7 @@ public class KingSafety {
 	public static boolean kingSafe(Move friendlyMove , int player){
 		//System.out.println("aaaa");
 		Board.getInstance().makeMove(friendlyMove);
-		ArrayList<Move> moves = Search.getAvailableMoves(player);
+		ArrayList<Move> moves = Search.getAvailableMoves(1-player);
 		for(Move mv: moves){
 			Board.getInstance().makeMove(mv);
 			if(mv.getCapturedPiece()!=null){

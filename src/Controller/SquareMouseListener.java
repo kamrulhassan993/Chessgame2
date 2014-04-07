@@ -9,8 +9,11 @@ import Model.Board;
 import Model.KingSafety;
 import Model.Move;
 import Model.NoMovesAvailableException;
+import Model.Pawn;
 import Model.Piece;
+import Model.PieceFactory;
 import Model.Search;
+import View.PromotionWindow;
 import View.SquarePanel;
 
 public class SquareMouseListener implements MouseListener {
@@ -39,12 +42,30 @@ public class SquareMouseListener implements MouseListener {
 			sp.getBoardView().setUpBoard();
 			Board.getInstance().setLastPlayerMove(move);
 			
+			Move last = Board.getInstance().getLastPlayerMove();
+			if( last.getPiece() instanceof Pawn && last.getEndPositon().getI()==0){
+				new PromotionWindow(last.getPiece(), sp.getBoardView());
+			}
 			
 			try {
-				Move cpuMove = Search.decision();
+				Move cpuMove = Search.decision(last);
 				Board.getInstance().setLastCpuMove(cpuMove);
 				Board.getInstance().makeMove(cpuMove);
 				sp.getBoardView().setUpBoard();
+				sp.getBoardView().getSquarePanelAt(cpuMove.getEndPositon().getI(), cpuMove.getEndPositon().getJ()).setBackground(Color.blue);
+				
+				
+				
+				Move lastCpu = Board.getInstance().getLastCpuMove();
+				if( lastCpu.getPiece() instanceof Pawn && lastCpu.getEndPositon().getI()==7){
+					Piece pawn = lastCpu.getPiece();
+					Piece newPiece = new PieceFactory().createPiece("bq", pawn.getLocation());
+					newPiece.setLocation(pawn.getLocation());
+					pawn.setLocation(null);
+					
+				}
+				
+				
 			} catch (Exception e) {
 			}
 			

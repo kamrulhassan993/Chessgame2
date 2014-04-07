@@ -31,10 +31,8 @@ public class ChessFrame extends JFrame {
 		this.getContentPane().setLayout(new BorderLayout());
 		this.getContentPane().add(bv, BorderLayout.CENTER);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		this.setSize(new Dimension(500,500));
 		this.setResizable(false);
-		//this.pack();
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 	}
@@ -45,7 +43,6 @@ public class ChessFrame extends JFrame {
 		saveButton = new JButton("Save");
 		loadButton = new JButton("Load");
 		undoMoveButton = new JButton("Undo Move");
-		
 		
 		buttonPanel.add(newGameButton);
 		buttonPanel.add(saveButton);

@@ -9,7 +9,7 @@ public class Pawn implements Piece {
 	private Square location;
 	private int numberOfmoves = 0;
 	private Move move = new Move(null, null, null);
-	
+	//aaa
 	private int[][] pieceSquareValueBlack = {
 			{0,  0,  0,  0,  0,  0,  0,  0}	,
 			{5, 10, 10,-20,-20, 10, 10,  5} ,
