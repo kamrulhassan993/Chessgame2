@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import Controller.LoadGameButtonListener;
 import Controller.NewGameButtonListener;
+import Controller.ReturnToMenuButtonListener;
 import Controller.SaveButtonListener;
 import Controller.UndoMoveButtonListener;
 
@@ -72,6 +73,11 @@ public class GamePanel extends JPanel {
 	
 	public void addLoadButtonListener(ActionListener al){
 		loadButton.addActionListener(al);
+	}
+	
+	public void addReturnToMenuButtonListener(ActionListener al){
+		menuButton.addActionListener(al);
+		
 	}
 	
 	 

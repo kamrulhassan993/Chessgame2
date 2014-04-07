@@ -51,10 +51,10 @@ public class Search {
 		
 		Collections.sort(moves, new MoveComparator());
 		
-		for(Move m: moves){
+		/*for(Move m: moves){
 			System.out.println(m.getMoveScore());
 		}
-		System.out.println("*******************");
+		System.out.println("*******************");*/
 		
 		return moves.get(0);
 		

@@ -5,22 +5,21 @@ import java.awt.event.ActionListener;
 
 import View.GameFrame;
 
-public class MenuStartButtonListener implements ActionListener {
+public class ReturnToMenuButtonListener implements ActionListener {
 
 	private GameFrame gf;
 	
-	public MenuStartButtonListener(GameFrame gf){
+	public ReturnToMenuButtonListener(GameFrame gf){
 		this.gf=gf;
-		
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		gf.switchToGame();
+		gf.switchToMenu();
 		gf.repaint();
 		gf.setSize(551,551);
 		gf.setSize(550,550);
+		
 	}
 
-		
 }
