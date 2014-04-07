@@ -14,13 +14,13 @@ import Controller.NewGameButtonListener;
 import Controller.SaveButtonListener;
 import Controller.UndoMoveButtonListener;
 
-public class ChessFrame extends JFrame {
+public class GamePanel extends JPanel {
 
 	private BoardView bv;
 	private JPanel buttonPanel;
-	private JButton newGameButton ,saveButton , loadButton , undoMoveButton;
+	private JButton newGameButton ,saveButton , loadButton , undoMoveButton, menuButton, helpButton;
 	
-	public ChessFrame(BoardView bv){
+	public GamePanel(BoardView bv){
 		this.bv=bv;
 		setUpChessBoard();
 		setUpButtons();
@@ -28,30 +28,32 @@ public class ChessFrame extends JFrame {
 	}
 	
 	public void setUpChessBoard(){
-		this.getContentPane().setLayout(new BorderLayout());
-		this.getContentPane().add(bv, BorderLayout.CENTER);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLayout(new BorderLayout());
+		this.add(bv, BorderLayout.CENTER);
+		/*this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(new Dimension(500,500));
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
-		this.setVisible(true);
+		this.setVisible(true);*/
 	}
 	
 	public void setUpButtons(){
-		this.buttonPanel = new JPanel(new GridLayout(1, 4, 10, 10));
+		this.buttonPanel = new JPanel(new GridLayout(1, 6, 10, 10));
 		newGameButton = new JButton("New Game");
 		saveButton = new JButton("Save");
 		loadButton = new JButton("Load");
 		undoMoveButton = new JButton("Undo Move");
+		menuButton = new JButton("Menu");
+		helpButton = new JButton("help");
 		
 		buttonPanel.add(newGameButton);
 		buttonPanel.add(saveButton);
 		buttonPanel.add(loadButton);
 		buttonPanel.add(undoMoveButton);
+		buttonPanel.add(menuButton);
+		buttonPanel.add(helpButton);
 		
-		this.getContentPane().add(buttonPanel, BorderLayout.NORTH);
-		
-		
+		this.add(buttonPanel, BorderLayout.NORTH);	
 	}
 	
 	public void addNewGameButtonListener(ActionListener al){

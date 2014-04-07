@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -13,7 +14,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MenuView extends JPanel {
+import Controller.MenuStartButtonListener;
+
+public class MenuPanel extends JPanel {
 	
 	private JButton startButton, loadButton, exitButton;
 	private JLabel diffLabel, logoLabel, firstMoveLabel;
@@ -22,8 +25,8 @@ public class MenuView extends JPanel {
 	private JComboBox difficulty , firstMove;
 	private JPanel centerPanel;
 	
+	public MenuPanel(){
 
-	public MenuView(){
 		this.setLayout(new BorderLayout());
 		this.logoLabel=new JLabel(new ImageIcon(ClassLoader.getSystemResource("Images/logo.png")));
 		centerPanel = new JPanel(new GridBagLayout());
@@ -90,6 +93,10 @@ public class MenuView extends JPanel {
 		
 		
 		
+	}
+	
+	public void addStartButtonListener(ActionListener al){
+		startButton.addActionListener(al);
 	}
 	
 	
