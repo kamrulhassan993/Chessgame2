@@ -13,7 +13,7 @@ public class Search {
 	
 	public static ArrayList<Move> getAvailableMoves(int player){
 		ArrayList<Move> moves = new ArrayList<Move>();
-		ArrayList<Piece> piecesOnBoard = new ArrayList<Piece>();
+		/*ArrayList<Piece> piecesOnBoard = new ArrayList<Piece>();
 		Square[][] squares = Board.getInstance().getBoard();
 		for(int i=0;i<8;i++){
 			for(int j=0;j<8;j++){
@@ -26,37 +26,51 @@ public class Search {
 		for(Piece p: piecesOnBoard){
 			moves.addAll(p.generateMoves());
 		}
+		*/
+		if(player==0){
+			for(Piece p: Board.getInstance().getWhitePieces()){
+				moves.addAll(p.generateMoves());
+			}
+		}else{
+			for(Piece p: Board.getInstance().getBlackPieces()){
+				moves.addAll(p.generateMoves());
+			}
+		}
 		
-		
+		//System.out.println(moves.size());
 		
 		return moves;
 	}
+	
+	
 	
 	public static Move decision(Move root){
 		
 		/*bestMove = null;
 		alphaBetaPrune(globalDepth, root, -1000000, 1000000, 1);
 		return bestMove;*/
-		ArrayList<Move> moves = getAvailableMoves(1);
-		moves= KingSafety.safeMoves(moves, 1);
-		for(Move m : moves){
+		bestMove=null;
+		//ArrayList<Move> moves = getAvailableMoves(1);
+		//moves= KingSafety.safeMoves(moves, 1);
+		/*for(Move m : moves){
 			Board.getInstance().makeMove(m);
 			//m.setMoveScore(alphabeta(m, globalDepth, -1000000, 1000000, true));
 			//m.setMoveScore(alphaBetaMax(-1000000, 1000000, globalDepth));
 			m.setMoveScore(alphaBetaPrune(globalDepth, root, -1000000, 1000000, 1));
 			Board.getInstance().undoMove(m);
-		}
+		}*/
 		
+		alphaBetaPrune(globalDepth, root, -1000000, 1000000, 1);
 		
-		
-		Collections.sort(moves, new MoveComparator());
+		//Collections.sort(moves, new MoveComparator());
 		
 		/*for(Move m: moves){
 			System.out.println(m.getMoveScore());
 		}
 		System.out.println("*******************");*/
 		
-		return moves.get(0);
+		//return moves.get(0);
+		return bestMove;
 		
 	}
 	

@@ -81,7 +81,17 @@ public class Square {
 		return j;
 	}
 	
-	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		Square sq = (Square) obj;
+		if(this.i!=sq.getI() && this.j!=sq.getJ()){
+			return false;
+		}
+		return true;
+	} 
 	
 	
 	

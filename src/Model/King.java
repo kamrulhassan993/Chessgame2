@@ -150,5 +150,7 @@ public class King implements Piece {
 				:kingEndGameBlack[location.getI()][location.getJ()];
 	}
 	
+	
+	
 
 }

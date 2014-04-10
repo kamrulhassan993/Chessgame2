@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Pawn implements Piece {
 
@@ -8,8 +9,7 @@ public class Pawn implements Piece {
 	private boolean hasMoved = false;
 	private Square location;
 	private int numberOfmoves = 0;
-	private Move move = new Move(null, null, null);
-	//aaa
+	
 	private int[][] pieceSquareValueBlack = {
 			{0,  0,  0,  0,  0,  0,  0,  0}	,
 			{5, 10, 10,-20,-20, 10, 10,  5} ,
@@ -151,6 +151,29 @@ public class Pawn implements Piece {
 	public int getPieceSquareValue() {
 		return (player==0)? pieceSquareValueWhite[location.getI()][location.getJ()]
 				:pieceSquareValueBlack[location.getI()][location.getJ()];
-	} 
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (hasMoved ? 1231 : 1237);
+		result = prime * result
+				+ ((location == null) ? 0 : location.hashCode());
+		result = prime * result + numberOfmoves;
+		result = prime * result + Arrays.hashCode(pieceSquareValueBlack);
+		result = prime * result + Arrays.hashCode(pieceSquareValueWhite);
+		result = prime * result + player;
+		return result;
+	}
+
+	
+	
+	
+	
+	
 
 }

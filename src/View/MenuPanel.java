@@ -20,8 +20,8 @@ public class MenuPanel extends JPanel {
 	
 	private JButton startButton, loadButton, exitButton;
 	private JLabel diffLabel, logoLabel, firstMoveLabel;
-	private String[] depth ={"easy depth 2","medium depth 3","hard depth 4"};
-	private String[] first = {"white first","black first"};
+	private String[] depth ={"Easy Depth 2","Medium Depth 3","Hard Depth 4"};
+	private String[] first = {"White Wirst","Black first"};
 	private JComboBox difficulty , firstMove;
 	private JPanel centerPanel;
 	
@@ -43,10 +43,10 @@ public class MenuPanel extends JPanel {
 		exitButton.setBorder(BorderFactory.createEmptyBorder());
 		exitButton.setContentAreaFilled(false);
 		
-		diffLabel = new JLabel("Select difficulty");
+		diffLabel = new JLabel("Select Difficulty");
 		difficulty= new JComboBox(depth);
 		
-		firstMoveLabel = new JLabel("move first");
+		firstMoveLabel = new JLabel("Move first");
 		firstMove = new JComboBox(first);
 		
 		gbc.fill= GridBagConstraints.HORIZONTAL;

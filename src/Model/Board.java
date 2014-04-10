@@ -8,7 +8,8 @@ public class Board extends BoardSuper {
 
 	private Square[][] board;
 	private final static Board INSTANCE = new Board();;
-	private List<Piece> piecesOnBoard;
+	private List<Piece> whitePieces;
+	private List<Piece> blackPieces;
 	private Piece selectedPiece = null;
 	private int playerTurnToMove=-1;
 	private Move lastPlayerMove= null;
@@ -76,11 +77,14 @@ public class Board extends BoardSuper {
 		board[0][4].setPiece(new King(1, board[0][4]));
 		board[7][4].setPiece(new King(0, board[7][4]));
 
-		piecesOnBoard = new ArrayList<Piece>();
+		whitePieces = new ArrayList<Piece>();
+		blackPieces = new ArrayList<Piece>();
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				if (board[i][j].getPiece() != null) {
-					piecesOnBoard.add(board[i][j].getPiece());
+				if (board[i][j].getPiece() != null && board[i][j].getPiece().getPlayer()==0) {
+					whitePieces.add(board[i][j].getPiece());
+				}else if(board[i][j].getPiece() != null && board[i][j].getPiece().getPlayer()==1){
+					blackPieces.add(board[i][j].getPiece());
 				}
 
 			}
@@ -99,6 +103,8 @@ public class Board extends BoardSuper {
 		
 		if(m.getEndPositon().getPiece() !=null){
 			m.setCapturedPiece(m.getEndPositon().getPiece());
+			int cap = m.getCapturedPiece().getPlayer();
+				removePiece(m.getCapturedPiece(), cap);
 		}
 		
 		end.setPiece(p);
@@ -118,8 +124,12 @@ public class Board extends BoardSuper {
 		m.getPiece().setLocation(m.getStartPositon());
 		m.getEndPositon().setPiece(null);
 		
+		
 		if (m.getCapturedPiece()!=null){
 			m.getEndPositon().setPiece(m.getCapturedPiece());
+			int cap = m.getCapturedPiece().getPlayer();
+			addPiece(m.getCapturedPiece(), cap);
+			
 		}
 			
 		if(m.getPiece() instanceof Pawn){
@@ -136,9 +146,7 @@ public class Board extends BoardSuper {
 		return board[i][j];
 	}
 
-	public List<Piece> getPiecesOnBoard() {
-		return piecesOnBoard;
-	}
+	
 
 	public Piece getSelectedPiece() {
 		return selectedPiece;
@@ -221,6 +229,43 @@ public class Board extends BoardSuper {
 				board[i][j].setPiece(null);
 			}
 		}
+	}
+	
+	
+	
+	
+	/**
+	 * @return the whitePieces
+	 */
+	public List<Piece> getWhitePieces() {
+		return whitePieces;
+	}
+
+	/**
+	 * @return the blackPieces
+	 */
+	public List<Piece> getBlackPieces() {
+		return blackPieces;
+	}
+
+	public void addPiece(Piece p, int player){
+		if(player==0){
+			whitePieces.add(p);
+			
+		}else{
+			blackPieces.add(p);
+		}
+		
+	}
+	
+	public void removePiece(Piece p, int player){
+		if(player==0){
+			whitePieces.remove(p);
+			
+		}else{
+			blackPieces.remove(p);
+		}
+		
 	}
 	
 	
