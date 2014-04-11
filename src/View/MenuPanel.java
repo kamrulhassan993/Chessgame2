@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
@@ -38,6 +39,7 @@ public class MenuPanel extends JPanel {
 		loadButton = new JButton(new ImageIcon(ClassLoader.getSystemResource("Images/loadGame.png")));
 		loadButton.setBorder(BorderFactory.createEmptyBorder());
 		loadButton.setContentAreaFilled(false);
+		loadButton.setActionCommand("menu");
 		
 		exitButton = new JButton(new ImageIcon(ClassLoader.getSystemResource("Images/exitGame.png")));
 		exitButton.setBorder(BorderFactory.createEmptyBorder());
@@ -91,6 +93,14 @@ public class MenuPanel extends JPanel {
 		this.add(logoLabel, BorderLayout.NORTH);
 		this.add(centerPanel,BorderLayout.CENTER);
 		
+		exitButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(1);
+				
+			}
+		});
+		
 		
 		
 	}
@@ -98,6 +108,11 @@ public class MenuPanel extends JPanel {
 	public void addStartButtonListener(ActionListener al){
 		startButton.addActionListener(al);
 	}
+	
+	public void addLoadButtonListener(ActionListener al){
+		loadButton.addActionListener(al);
+	}
+	
 	
 	
 

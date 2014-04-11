@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -19,7 +20,7 @@ import Controller.UndoMoveButtonListener;
 public class GamePanel extends JPanel {
 
 	private BoardView bv;
-	private JPanel buttonPanel;
+	private JPanel buttonPanel, bottomButtonPanel;
 	private JButton newGameButton ,saveButton , loadButton , undoMoveButton, menuButton, helpButton;
 	
 	public GamePanel(BoardView bv){
@@ -32,31 +33,41 @@ public class GamePanel extends JPanel {
 	public void setUpChessBoard(){
 		this.setLayout(new BorderLayout());
 		this.add(bv, BorderLayout.CENTER);
-		/*this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(new Dimension(500,500));
-		this.setResizable(false);
-		this.setLocationRelativeTo(null);
-		this.setVisible(true);*/
+
 	}
 	
 	public void setUpButtons(){
-		this.buttonPanel = new JPanel(new GridLayout(1, 6, 10, 10));
+		this.buttonPanel = new JPanel(new GridLayout(1, 4));
+		this.bottomButtonPanel = new JPanel(new GridLayout(1,2));
 		GridBagConstraints gbc = new GridBagConstraints();
 		newGameButton = new JButton("New Game");
 		saveButton = new JButton("Save");
 		loadButton = new JButton("Load");
 		undoMoveButton = new JButton("Undo Move");
-		menuButton = new JButton("Menu");
-		helpButton = new JButton("help");
+		menuButton = new JButton("Return to the menu screen");
+		helpButton = new JButton("How to play the game");
 		
 		buttonPanel.add(newGameButton);
 		buttonPanel.add(saveButton);
 		buttonPanel.add(loadButton);
 		buttonPanel.add(undoMoveButton);
-		buttonPanel.add(menuButton);
-		buttonPanel.add(helpButton);
+		
+		bottomButtonPanel.add(menuButton);
+		bottomButtonPanel.add(helpButton);
 		
 		this.add(buttonPanel, BorderLayout.NORTH);	
+		this.add(bottomButtonPanel, BorderLayout.SOUTH);
+		
+		helpButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (!HelpPage.isOpen()){
+					new HelpPage(); 
+				}
+				
+			}
+		});
+		
 	}
 	
 	public void addNewGameButtonListener(ActionListener al){

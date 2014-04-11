@@ -20,25 +20,33 @@ import Model.Queen;
 import Model.Rook;
 import Model.Square;
 import View.BoardView;
+import View.GameFrame;
+import View.MenuPanel;
 
 public class LoadGameButtonListener implements ActionListener {
 
 	private BoardView bv;
 	private final JFileChooser fc = new JFileChooser();
 	private File file;
+	private GameFrame gf;
 	
-	public LoadGameButtonListener(BoardView bv){
+	public LoadGameButtonListener(BoardView bv, GameFrame gf){
 		this.bv=bv;
+		this.gf=gf;
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent ae) {
 		fc.setCurrentDirectory(new File("./"));
 		int val = fc.showOpenDialog(null);
 		
 		if(val == JFileChooser.APPROVE_OPTION){
 			file = fc.getSelectedFile();
 			System.out.println(file.getPath());
+		}
+		
+		if(ae.getActionCommand().equals("menu")){
+			gf.switchToGame();
 		}
 		
 		readFromFile();
