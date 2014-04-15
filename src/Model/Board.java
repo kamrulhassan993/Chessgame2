@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
+/**
+ * @author Kamrul
+ *
+ */
 public class Board extends BoardSuper {
 
 	private Square[][] board;
@@ -16,13 +21,17 @@ public class Board extends BoardSuper {
 	private Move lastCpuMove= null;
 	
 
-	
+
 	private Board() {
 		super();
 		setUpBoard();
 
 	}
 	
+	
+	/**
+	 * creates the board with the pieces at the current set locations
+	 */
 	public void setUpBoard(){
 		board = new Square[8][8];
 
@@ -91,11 +100,19 @@ public class Board extends BoardSuper {
 		}
 	}
 
+	/**
+	 * 
+	 * @return the singleton instance of the board class
+	 */
 	public static Board getInstance() {
 
 		return INSTANCE;
 	}
 
+	/**
+	 * make the move that is being passed as a parameter 
+	 * @param m the move being made
+	 */
 	public void makeMove(Move m) {
 		Square end = m.getEndPositon();
 		Square start = m.getStartPositon();
@@ -119,6 +136,10 @@ public class Board extends BoardSuper {
 		
 	}
 
+	/**
+	 * undos the move which has been passed as parameter 
+	 * @param m the move being undone 
+	 */
 	public void undoMove(Move m) {
 		m.getStartPositon().setPiece(m.getPiece());
 		m.getPiece().setLocation(m.getStartPositon());
@@ -138,24 +159,47 @@ public class Board extends BoardSuper {
 
 	}
 
+	
+	/**
+	 * @return the square multidimensional
+	 */
 	public Square[][] getBoard() {
 		return board;
 	}
 
+	
+	/**
+	 * @param i the y coordinate for the square
+	 * @param j the x coordinate for the square
+	 * @return the square object on the board at location i and j
+	 */
 	public Square getSquare(int i, int j) {
 		return board[i][j];
 	}
 
 	
-
+	/**
+	 * 
+	 * @return the piece that is currently selected 
+	 */
 	public Piece getSelectedPiece() {
 		return selectedPiece;
 	}
 
+	/**
+	 * 
+	 * @param selectedPiece set the selected pieces to this piece
+	 */
 	public void setSelectedPiece(Piece selectedPiece) {
 		this.selectedPiece = selectedPiece;
 	}
 
+	/**
+	 * 
+	 * @param i y coordinate for the board
+	 * @param j x coordinate for the board 
+	 * @return the piece on the board at location i and j
+	 */
 	public Piece getPieceAtSquare(int i, int j) {
 		return board[i][j].getPiece();
 	}
@@ -167,11 +211,18 @@ public class Board extends BoardSuper {
 		return playerTurnToMove;
 	}
 	
+	/**
+	 * 
+	 * @param player changes the player to the current players opposing player
+	 */
 	public void changePlayer(int player){
 		player= 1-player;
 	}
 
-	
+	/**
+	 * 
+	 * @return true if undo move is possible , false if not
+	 */
 	public boolean undoPreviousMoves(){
 		if(lastCpuMove==null || lastPlayerMove==null){
 			return false;
@@ -223,31 +274,43 @@ public class Board extends BoardSuper {
 		this.lastCpuMove = lastCpuMove;
 	}
 	
+	/**
+	 * clears the board by setting all pieces to null
+	 */
 	public void clearBoard(){
 		for(int i=0 ; i<8;i++){
 			for(int j=0 ; j<8;j++){
 				board[i][j].setPiece(null);
 			}
 		}
+		
+		whitePieces.clear();
+		blackPieces.clear();
 	}
 	
 	
 	
 	
 	/**
-	 * @return the whitePieces
+	 * @return the whitePieces currently on the boards
 	 */
 	public List<Piece> getWhitePieces() {
 		return whitePieces;
 	}
 
 	/**
-	 * @return the blackPieces
+	 * @return the blackPieces currently on the board
 	 */
 	public List<Piece> getBlackPieces() {
 		return blackPieces;
 	}
 
+	
+	/**
+	 * adds the piece to a list of pieces that is currently on the board
+	 * @param p the piece being added to the list
+	 * @param player the player for which the piece belongs to
+	 */
 	public void addPiece(Piece p, int player){
 		if(player==0){
 			whitePieces.add(p);
@@ -258,12 +321,26 @@ public class Board extends BoardSuper {
 		
 	}
 	
+	/**
+	 * removes the pieces from a list of pieces currently on the board
+	 * @param p the piece being removed from the list
+	 * @param player the player for which the piece belongs to
+	 */
 	public void removePiece(Piece p, int player){
 		if(player==0){
 			whitePieces.remove(p);
 			
 		}else{
 			blackPieces.remove(p);
+		}
+		
+	}
+	
+	public List<Piece> getPiecesOnBoard(int player){
+		if(player==0){
+			return whitePieces;
+		}else {
+			return blackPieces;
 		}
 		
 	}

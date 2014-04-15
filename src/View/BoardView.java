@@ -14,12 +14,17 @@ public class BoardView extends JPanel{
 	public final static Color LIGHTBROWN =new Color(239, 191, 106);
 	public final static Color DARKBROWN =new Color(102, 26, 12);
 	
-	
+	/**
+	 * creates a visual chess board made up of smaller squares 
+	 */
 	public BoardView(){
 		this.setLayout(new GridLayout(8,8,1,1));
 		this.setUpBoard();
 	}
 	
+	/**
+	 * destroys the board and redraws it again with the currently location of peices 
+	 */
 	public void setUpBoard(){
 		this.removeAll();
 		
@@ -40,6 +45,9 @@ public class BoardView extends JPanel{
 		this.repaint();
 	}
 	
+	/**
+	 * recolours the current squares on the board to their original colour
+	 */
 	public void recolorBoard(){
 		for(int i=0;i<8;i++){
 			for(int j=0;j<8;j++){
@@ -49,6 +57,12 @@ public class BoardView extends JPanel{
 		this.repaint();
 	}
 	
+	/**
+	 * 
+	 * @param i y coordinate of the chess board
+	 * @param j x coordinate of the chess board
+	 * @return the individual square panel at the location i and j
+	 */
 	public SquarePanel getSquarePanelAt(int i, int j){
 		return squares[i][j];
 	}

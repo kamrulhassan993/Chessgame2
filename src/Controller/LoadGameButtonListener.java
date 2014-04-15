@@ -42,20 +42,20 @@ public class LoadGameButtonListener implements ActionListener {
 		
 		if(val == JFileChooser.APPROVE_OPTION){
 			file = fc.getSelectedFile();
-			System.out.println(file.getPath());
+			
+			if(ae.getActionCommand().equals("menu")){
+				gf.switchToGame();
+			}
+			
+			readFromFile();
+			
 		}
 		
-		if(ae.getActionCommand().equals("menu")){
-			gf.switchToGame();
-		}
-		
-		readFromFile();
-
 	}
 	
 	
 	public void readFromFile() {
-		
+		Board.getInstance().clearBoard();
 		
 		try{
 			BufferedReader br = new BufferedReader(new FileReader(file));

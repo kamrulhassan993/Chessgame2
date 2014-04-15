@@ -23,6 +23,10 @@ public class GamePanel extends JPanel {
 	private JPanel buttonPanel, bottomButtonPanel;
 	private JButton newGameButton ,saveButton , loadButton , undoMoveButton, menuButton, helpButton;
 	
+	/**
+	 * 
+	 * @param bv the board view of the chess board
+	 */
 	public GamePanel(BoardView bv){
 		this.bv=bv;
 		setUpChessBoard();
@@ -30,13 +34,19 @@ public class GamePanel extends JPanel {
 		
 	}
 	
-	public void setUpChessBoard(){
+	/**
+	 * adds the chess board to the centre of the this panel
+	 */
+	private void setUpChessBoard(){
 		this.setLayout(new BorderLayout());
 		this.add(bv, BorderLayout.CENTER);
 
 	}
 	
-	public void setUpButtons(){
+	/**
+	 * creates the buttons for this panel
+	 */
+	private void setUpButtons(){
 		this.buttonPanel = new JPanel(new GridLayout(1, 4));
 		this.bottomButtonPanel = new JPanel(new GridLayout(1,2));
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -70,22 +80,43 @@ public class GamePanel extends JPanel {
 		
 	}
 	
+	/**
+	 * 
+	 * @param al the actionListener for the new game button
+	 */
 	public void addNewGameButtonListener(ActionListener al){
 		newGameButton.addActionListener(al);
 	}
 	
+	/**
+	 * 
+	 * @param al the ActionListener for the undo move button
+	 */
 	public void addUndoMoveButtonListener(ActionListener al){
 		undoMoveButton.addActionListener(al);
 	}
 	
+	/**
+	 * 
+	 * @param al the ActionListener for the save button
+	 */
 	public void addSaveButtonListener(ActionListener al){
 		saveButton.addActionListener(al);
 	}
 	
+	/**
+	 * 
+	 * @param al the ActionListener for the load button
+	 */
 	public void addLoadButtonListener(ActionListener al){
 		loadButton.addActionListener(al);
 	}
 	
+	
+	/**
+	 * 
+	 * @param al the ActionListenr for the button to return to the main Menu
+	 */
 	public void addReturnToMenuButtonListener(ActionListener al){
 		menuButton.addActionListener(al);
 		

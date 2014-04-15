@@ -13,7 +13,11 @@ public class GameFrame extends JFrame{
 	
 	private BoardView bv = new BoardView();
 	
+	/**
+	 * creates the JFrame for the game 
+	 */
 	public GameFrame(){
+		super("Alpha beta chess game");
 		this.setSize(550,550);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
@@ -25,7 +29,10 @@ public class GameFrame extends JFrame{
 		
 		
 	}
-	
+
+	/**
+	 * switch the frame to the main menu panel
+	 */
 	public void switchToMenu(){
 		this.getContentPane().removeAll();
 		MenuPanel mv = new MenuPanel();
@@ -36,6 +43,9 @@ public class GameFrame extends JFrame{
 		this.setSize(550,550);
 	}
 	
+	/**
+	 * switch the frame to the game play panels
+	 */
 	public void switchToGame(){
 		this.getContentPane().removeAll();
 		

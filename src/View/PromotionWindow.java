@@ -27,6 +27,12 @@ public class PromotionWindow extends JFrame{
 	
 	private Piece p;
 	
+	/**
+	 * creates a boarder less window which cannot be closed or minimised until the 
+	 * player has chose a new type for the pawn
+	 * @param p the piece being promoted
+	 * @param bv the view of the chess board
+	 */
 	public PromotionWindow(Piece p, BoardView bv){
 		this.bv=bv;
 		this.p=p;

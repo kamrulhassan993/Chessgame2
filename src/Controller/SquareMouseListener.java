@@ -54,14 +54,20 @@ public class SquareMouseListener implements MouseListener {
 				sp.getBoardView().setUpBoard();
 				sp.getBoardView().getSquarePanelAt(cpuMove.getEndPositon().getI(), cpuMove.getEndPositon().getJ()).setBackground(Color.blue);
 				
-				
+				/*ArrayList<Move> opposingPlayer = Search.getAvailableMoves(0);
+				if(opposingPlayer.isEmpty()){
+					System.out.println("check mate");
+				}*/
 				
 				Move lastCpu = Board.getInstance().getLastCpuMove();
 				if( lastCpu.getPiece() instanceof Pawn && lastCpu.getEndPositon().getI()==7){
 					Piece pawn = lastCpu.getPiece();
 					Piece newPiece = new PieceFactory().createPiece("bq", pawn.getLocation());
 					newPiece.setLocation(pawn.getLocation());
+					Board.getInstance().removePiece(pawn, 1);
+					Board.getInstance().addPiece(newPiece, 1);
 					pawn.setLocation(null);
+					sp.getBoardView().setUpBoard();
 					
 				}
 				

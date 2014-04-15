@@ -27,11 +27,12 @@ public class SaveButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		fc.setCurrentDirectory(new File("./"));
-		int val = fc.showOpenDialog(null);
+		int val = fc.showSaveDialog(null);
 		if(val == JFileChooser.APPROVE_OPTION){
+			writeToSaveFile(fc.getSelectedFile().toString());
 		}
 		
-		writeToSaveFile(fc.getSelectedFile().toString());
+		
 	}
 	
 	public void writeToSaveFile(String filelocation) {

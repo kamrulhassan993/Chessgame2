@@ -13,6 +13,10 @@ public class HelpPage extends JFrame{
 	
 	private static boolean isOpen = false;
 	
+	/**
+	 * creates a JFrame which show the instructions on how to play the game
+	 * only one frame can be open at any time
+	 */
 	public HelpPage(){
 		super("How to play");
 		this.isOpen=true;
@@ -73,7 +77,10 @@ public class HelpPage extends JFrame{
 		});
 	}
 	
-	
+	/**
+	 * 
+	 * @return boolean value to see if the window is already open 
+	 */
 	public static boolean isOpen(){
 		return isOpen;
 	}

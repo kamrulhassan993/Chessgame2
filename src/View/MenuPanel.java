@@ -26,8 +26,11 @@ public class MenuPanel extends JPanel {
 	private JComboBox difficulty , firstMove;
 	private JPanel centerPanel;
 	
+	
+	/**
+	 * creates the main menu panel
+	 */
 	public MenuPanel(){
-
 		this.setLayout(new BorderLayout());
 		this.logoLabel=new JLabel(new ImageIcon(ClassLoader.getSystemResource("Images/logo.png")));
 		centerPanel = new JPanel(new GridBagLayout());
@@ -104,11 +107,18 @@ public class MenuPanel extends JPanel {
 		
 		
 	}
-	
+	/**
+	 * 
+	 * @param al adds the ActionListener for the start button
+	 */
 	public void addStartButtonListener(ActionListener al){
 		startButton.addActionListener(al);
 	}
 	
+	/**
+	 * 
+	 * @param al adds the ActionListener for the load button
+	 */
 	public void addLoadButtonListener(ActionListener al){
 		loadButton.addActionListener(al);
 	}

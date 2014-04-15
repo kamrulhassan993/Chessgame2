@@ -78,6 +78,8 @@ public class King implements Piece {
 				moves.add(new Move(location, location.getUp().getLeft(),this ));
 				
 			}
+			
+			
 		}
 		
 		// down , down left , down right 

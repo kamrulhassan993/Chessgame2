@@ -2,6 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 
+
 public class Bishop implements Piece{
 	
 	private int player;
@@ -35,6 +36,7 @@ public class Bishop implements Piece{
 		this.location=location;
 	}
 	
+	
 	@Override
 	public ArrayList<Move> generateMoves() {
 		ArrayList<Move> moves = new ArrayList<Move>();
@@ -67,6 +69,7 @@ public class Bishop implements Piece{
 	public int getCentiPawnValue() {
 		return 350;
 	}
+	
 	
 	public int getPieceSquareValue() {
 		return (player==0)? pieceSquareValueWhite[location.getI()][location.getJ()]

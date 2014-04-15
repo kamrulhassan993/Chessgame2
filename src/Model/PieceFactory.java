@@ -6,6 +6,12 @@ public class PieceFactory {
 		
 	}
 	
+	/**
+	 * 
+	 * @param charval the text value for the piece that user wants to create
+	 * @param location the location for the piece being created
+	 * @return returns a new piece object of type Piece wanted 
+	 */
 	public Piece createPiece(String charval, Square location){
 		Piece p = null;
 		
